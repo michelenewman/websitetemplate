@@ -1,0 +1,19 @@
+bio:
+  name: "Michele Newman"
+  text: "I'm Michele Newman, a Ph.D. candidate at the University of Washington's Information School, advised by Dr. Jin Ha Lee and Dr. Jason Yip. My research explores how communities create and preserve cultural knowledge through interactive media, including video games and creativity support tools, framing these environments as lasting infrastructures for cultural heritage and community identity."
+
+research:
+  - emoji: "🎮"
+    text: "Finding ways to preserve digital stories, games, and cultural content before they disappear"
+  - emoji: "🛠️"
+    text: "Co-creating tools and experiences that invite collaboration, creativity, and discovery"
+  - emoji: "🤖"
+    text: "Exploring how AI and new technologies change the way we imagine, create, and engage with information"
+
+my_work:
+  - name: "Projects"
+    id: "projects-btn"
+  - name: "Teaching"
+    id: "teaching-btn"
+  - name: "Publications"
+    id: "publications-btn"
