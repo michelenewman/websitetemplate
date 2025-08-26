@@ -1,92 +1,254 @@
+/* Reset & Base */
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  background: linear-gradient(135deg, #ffdede, #fff6a9, #d9f5ec, #d7eaff, #e9d9ff);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  font-family: 'Open Sans', "VT-100", fixedsys, System, monospace;
-  font-size: 14px;
-  color: #2f2f2f;
-  line-height: 1.4;
+  font-family:"Verdana",sans-serif;
+  background: linear-gradient(135deg, rgba(255,222,222,0.7), rgba(233,217,255,0.7), rgba(217,245,236,0.7)),
+              url('assets/pastel-stars.png') no-repeat center center fixed;
+  background-size:cover;
+  min-height:100vh;
+  color:#333;
+  padding:2rem;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Header styled like sections */
+header {
+  text-align: center;
+  padding: 1.5rem;
+  border: 4px solid #6a5acd;
+  background: rgba(255, 253, 249, 0.95);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 #c4a7e7;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+  font-family:"Press Start 2P", monospace;
+  font-size:1.5rem;
+  color:#c38d9e;
+  text-shadow:2px 2px #fff;
+}
+.tagline { font-style:italic; color:#444; margin-top:0.5rem; }
+
+/* Navigation */
+nav { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem; margin-top:1rem; }
+nav a {
+  text-decoration:none;
+  padding:0.6rem 1.2rem;
+  border:3px solid #6a5acd;
+  border-radius:12px;
+  background:#d7eaff;
+  color:#6a5acd;
+  font-weight:bold;
+  text-shadow:1px 1px #fff;
+  box-shadow:4px 4px #a3bffa;
+  transition: all 0.2s ease;
+}
+nav a:hover, nav a:focus {
+  background: #6a5acd;
+  color: #fff;
+  box-shadow: inset 2px 2px #fff,4px 4px #333;
+  transform:scale(1.05) rotate(-1deg);
+  outline:3px dashed #6a5acd;
+  outline-offset:3px;
 }
 
-center { text-align: center; }
+/* Sections */
+section { margin:2rem auto; max-width:700px; padding:1.5rem; border:4px solid #ffb6b6; background: rgba(255,253,249,0.95); border-radius:16px; box-shadow:6px 6px 0 #ffb6b6; }
+h2 { font-family:"Silkscreen",monospace; color:#6a5acd; margin-bottom:0.8rem; text-shadow:2px 2px #fff; }
 
-a { color: #3c5832; text-decoration: none; font-weight: bold; }
-a:hover { color: #7aa469; text-decoration: underline; }
-
-.sidebar-group { position: fixed; top: 0; margin-top: 25px; }
-
-.sidebar, .mini-sidebar, .wide-sidebar, .box {
-  background: #fffdf9;
-  border-radius: 8px;
-  border: 2px solid #c4a7e7;
-  box-shadow: 3px 3px #9b7bbb;
+/* Bio */
+.bio-container {
+  display: flex;
+  flex-wrap: wrap;      /* allow wrapping on small screens */
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-.sidebar img, .mini-sidebar img, .wide-sidebar img, .box img { max-width: 100%; height: auto; }
-.sidebar, .sidebar-box { display: inline-block; vertical-align: top; width: 160px; }
-.sidebar-box { margin-left: 10px; }
-.sidebar { width: 160px; margin-left: 25px; }
-.mini-sidebar { margin-bottom: 25px; }
-.wide-sidebar { margin-left: 25px; margin-top: 25px; width: 340px; min-height: 150px; }
-
-.inner { padding: 10px; padding-bottom: 5px; padding-top: 0; }
-
-.title-bar, .box-title-bar {
-  background: linear-gradient(90deg, #c4a7e7, #d7eaff);
-  color: #2f2f2f;
-  font-weight: 700;
-  padding: 5px 8px;
-  border-bottom: 2px solid #9b7bbb;
-}
-.box-title-bar { padding: 7px 10px; }
-.right {
-  float: right;
-  margin-right: 5px;
-  font-family: 'Open Sans', sans-serif;
-  line-height: 12px;
-  color: #555;
+.bio-image {
+  width: 150px;         /* responsive width */
+  height: auto;         /* maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #d9b3ff;
+  box-shadow: 4px 4px 0 #c4a7e7;
+  cursor: pointer;
+  flex-shrink: 0;       /* prevent shrinking */
 }
 
-@keyframes popIn {
-  0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
-  60% { transform: scale(1.05) rotate(2deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+.bio-container p {
+  color: #444;
+  line-height: 1.6;
+  flex: 1;              /* text takes remaining space */
+  min-width: 200px;     /* avoid being too narrow */
 }
-.box {
-  margin-top: 25px;
-  margin-left: 400px;
-  width: 455px;
-  margin-bottom: 25px;
-  background: #fdfcff;
-  border: 2px solid #ffb6b6;
-  box-shadow: 3px 3px #d28c8c;
-  animation: popIn 0.8s ease-out;
-}
-.box:nth-of-type(1) { animation-delay: 0.2s; }
-.box:nth-of-type(2) { animation-delay: 0.4s; }
-.box:nth-of-type(3) { animation-delay: 0.6s; }
 
-/* Responsive Media Query */
-@media screen and (max-width: 768px) {
-  .sidebar-group, .sidebar {
-    position: relative;
-    width: 100%;
-    margin: 0;
+/* Responsive tweak for small screens */
+@media(max-width: 600px) {
+  .bio-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-
-  .box {
-    margin-left: 0;
-    width: 90%;
-    margin: 20px auto;
+  .bio-image {
+    width: 120px;
+    height: auto;
   }
+}
 
-  body {
-    font-size: 16px;
-  }
+/* Buttons */
+.buttons-container { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1rem; }
+.work-btn, .cv-btn {
+  padding:0.7rem 1.4rem;
+  border:4px solid #6a5acd;
+  border-radius:12px;
+  font-family:monospace;
+  font-weight:bold;
+  text-shadow:1px 1px #fff;
+  box-shadow:4px 4px #a3bffa;
+  cursor:pointer;
+  transition: all 0.2s ease;
+  text-decoration:none;
+  color:#6a5acd;
+  background:#ffdede;
+}
+.work-btn:hover, .cv-btn:hover, .work-btn:focus, .cv-btn:focus {
+  background: #6a5acd;
+  color: #fff;
+  box-shadow: inset 2px 2px #fff,4px 4px #333;
+  transform: scale(1.08) rotate(-2deg);
+  outline:3px dashed #6a5acd;
+  outline-offset:3px;
+}
+.cv-container { display:flex; justify-content:center; margin-top:1rem; }
+
+/* Pop-ups */
+.project-window, .egg-window {
+  position: fixed;
+  background:#fff;
+  border:4px solid #6a5acd;
+  border-radius:12px;
+  box-shadow:6px 6px 0 #c4a7e7;
+  z-index:2000;
+  overflow:auto;
+  font-family: monospace;
+  animation: bounceIn 0.5s ease;
+  resize: both;
+  min-width:200px;
+  min-height:100px;
+  max-width:95vw;
+  max-height:90vh;
+}
+
+/* Small purple fun-fact windows */
+.project-window.scattered {
+  background: #f3e8ff;
+  border: 3px solid #bfa0ff;
+  box-shadow: 4px 4px 0 #c4a7e7;
+  max-width: 250px;
+  max-height: 150px;
+}
+
+/* Window headers (title bars) */
+.project-window .window-header,
+.egg-window .window-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 10px;
+  cursor:move;
+  font-weight:bold;
+  border-radius:8px 8px 0 0;
+  border-bottom:4px solid #6a5acd;
+  box-shadow: inset 0 -2px rgba(0,0,0,0.1);
+  text-shadow:1px 1px #000;
+}
+
+/* Header colors */
+.project-window.projects .window-header { background: linear-gradient(to bottom,#6a5acd,#8a7dff); color:#fff; }
+.project-window.teaching .window-header { background: linear-gradient(to bottom,#ffb347,#ffcc7f); color:#fff; }
+.project-window.publications .window-header { background: linear-gradient(to bottom,#ff6f91,#ff9fb1); color:#fff; }
+.project-window.scattered .window-header { background: linear-gradient(to bottom,#bfa0ff,#d9b3ff); color:#6a5acd; font-weight:bold; }
+.egg-window.zelda .window-header { background: linear-gradient(to bottom,#fffa7c,#ffd700); color:#4b0082; text-shadow:2px 2px #fff; border-bottom:4px solid #fffa7c; }
+
+/* Pop-up body */
+.project-window .window-body,
+.egg-window .window-body { padding:12px; font-size:1rem; color:#333; }
+
+/* Close buttons */
+.project-window .close-btn,
+.egg-window .close-btn {
+  background:#fff;
+  border:2px solid #666;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  padding:0 8px;
+}
+.project-window .close-btn:hover,
+.egg-window .close-btn:hover { background:#666; color:#fff; }
+
+/* Zelda Easter Egg */
+#egg-icon {
+  position: fixed; bottom:20px; right:20px; width:40px; height:40px; background:#ff00ff; color:white;
+  font-weight:bold; font-family:monospace; display:flex; align-items:center; justify-content:center;
+  border:2px solid #000; border-radius:4px; cursor:pointer; box-shadow:4px 4px 0 #a3bffa; z-index:2000;
+}
+#egg-icon:hover, #egg-icon:focus { transform:scale(1.2) rotate(-5deg); transition: all 0.2s ease; outline:none; }
+
+/* Bounce Animation */
+@keyframes bounceIn{
+  0%{transform:scale(0.3) translateY(-200px);opacity:0;}
+  50%{transform:scale(1.05) translateY(20px);opacity:1;}
+  70%{transform:scale(0.95) translateY(-10px);}
+  100%{transform:scale(1) translateY(0);}
+}
+
+/* Zelda scroll text */
+.scroll-text{display:block;white-space:nowrap;overflow:hidden;}
+.scroll-text span{display:inline-block;padding-left:100%;animation:scroll-left 6s linear infinite;font-weight:bold;color:#6a5acd;}
+@keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+
+/* Mobile responsiveness for pop-ups */
+@media (max-width: 768px) {
+  .project-window, .egg-window { max-width:90vw; max-height:60vh; font-size:0.9rem; }
+  .project-window.scattered { max-width:80vw; max-height:120px; }
+  .window-header { padding:4px 8px; font-size:0.9rem; }
+  .window-body { padding:8px; font-size:0.85rem; }
+}
+@media (max-width: 480px) {
+  .project-window, .egg-window { max-width:95vw; max-height:55vh; }
+  .project-window.scattered { max-width:90vw; max-height:100px; }
+  .window-header { font-size:0.8rem; padding:3px 6px; }
+  .window-body { font-size:0.8rem; padding:6px; }
+}
+
+/* Ensure nav and buttons scale */
+nav a, .work-btn, .cv-btn { font-size:0.9rem; padding:0.5rem 1rem; }
+@media (max-width: 480px) { nav a, .work-btn, .cv-btn { font-size:0.8rem; padding:0.4rem 0.8rem; } }
+
+/* Research list styling */
+.research-list {
+  list-style: none;           /* remove default bullets */
+  padding-left: 1rem;         /* indent the list */
+  margin-top: 1rem;
+}
+
+.research-list li {
+  position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 2rem;         /* space for custom bullet */
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Optional: add a small pastel circle behind the emoji */
+.research-list li::before {
+  content: '•';               /* fallback bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #6a5acd;
+  font-size: 1.2rem;
 }
